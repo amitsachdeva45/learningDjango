@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block head_value %} {{ block.super }} Welcome ! {% endblock%}
+
+<style>
+      {% block style %}
+          #lead{
+            background-color:red;
+          }
+    {% endblock %}
+    </style>
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Navbar example</h1>
+    <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
+    <a class="btn btn-lg btn-primary" href="/docs/4.3/components/navbar/" role="button">View navbar docs &raquo;</a>
+</div>
+    <p id ="lead"> Hello amit How are yoi=u</p>
+{% endblock %}
+
+
+{%block form %}
+<p>hello {{template_title}}</p>
+
+<iframe width="290" height="260" src = "https://www.youtube.com/embed/BlscsVDBCK4&t=745s" frameborder="0" allowfullscreen></iframe>
+<p style="color:red;"><strong>Bellow variables are coming from setting.py in templates</strong></p>
+
+<p> USer =  {{user}}</p>
+
+
+<p> Request User =  {{request.user}}</p>
+
+<form method="post" action="">{% csrf_token %}
+
+    {{forms | crispy}}
+    <input class = 'btn btn-primary' type = "submit">
+</form>
+{% endblock %}
