@@ -2,10 +2,9 @@ from django.shortcuts import render
 from .forms import SignUpForm, contactForm
 from django.core.mail import send_mail
 from django.conf import settings
-
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
-
+@login_required(login_url='/admin/')
 def frontend(request):
     return render(request, "base.html", {})
 def contact(request):

@@ -41,7 +41,6 @@ Search =>  DISPLAY UNLOCK CAPTCHA
 """
 
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -49,14 +48,15 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #Third party apps on second place
     'crispy_forms',
 
     #My Apps on third place
-    'newsletter'
+    'newsletter',
+    'classBasedView',
 )
 
 MIDDLEWARE_CLASSES = (
