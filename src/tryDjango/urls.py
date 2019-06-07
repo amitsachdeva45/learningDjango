@@ -3,7 +3,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic.base import TemplateView
-from classBasedView.views import classBased, MyView
+from classBasedView.views import classBased, MyView,\
+    ClassDetailView, ClassListView, ClassCreateView, \
+    ClassUpdateView, ClassDeleteView
 
 
 urlpatterns = [
@@ -16,6 +18,12 @@ urlpatterns = [
     url(r'^classView/', TemplateView.as_view(template_name="classBasedView/classBasedMain.html") ,name="classView"),
     url(r'^classTemplateViewAbout/',  classBased.as_view() ,name="classTemplateViewAbout"),
     url(r'^classBaseViewAbout/',  MyView.as_view(template_name ="classBasedView/BaseView.html") ,name="classBaseViewAbout"),
+    url(r'^class/create/$',  ClassCreateView.as_view() ,name="class_create"),
+    url(r'^class/(?P<slug>[-\w]+)/$',  ClassDetailView.as_view() ,name="class_detail"),
+    url(r'^class/(?P<slug>[-\w]+)/delete/$',  ClassDeleteView.as_view() ,name="class_delete"),
+    url(r'^class/(?P<slug>[-\w]+)/update/$',  ClassUpdateView.as_view() ,name="class_update"),
+    url(r'^class/$',  ClassListView.as_view() ,name="class_list"),
+
     #url(r'^accounts/', include('registration.backends.default.urls')),
 ]
 
