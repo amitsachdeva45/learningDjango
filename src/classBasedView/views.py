@@ -84,7 +84,7 @@ class ClassListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         qs = super(ClassListView, self).get_queryset(*args, **kwargs).order_by("-id") #-id means desc order
-        #filter(title__startwith = "yet")
+        #filter(title__startwith = "yet") # we can filter the list of with title having yet
         return qs
 
 
@@ -92,11 +92,24 @@ class ClassListView(ListView):
 #Adding a ModelFixingForm in detail view
 class ClassDetailView(ModelFormMixin, MultipleObjectMixing, DetailView):
     model = Class
-
+    form_class = ClassForm
     def get_context_data(self, *args, **kwargs):
         context = super(ClassDetailView, self).get_context_data(*args, **kwargs)
-        context["form"] = self.get_form()
+        context["form"] = self.get_form() #get_form is function of ModelFormMixing which provide form
         return context
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            self.object = self.get_object()
+            form = self.get_form()
+            if form.is_valid():
+                return self.form_valid(form)
+            else:
+                return self.form_invalid(form)
+
+    def get_success_url(self):
+        return reverse("class_list")
+
 
 
 class classBased(TemplateView):

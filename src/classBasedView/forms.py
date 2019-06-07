@@ -10,7 +10,7 @@ class ClassForm(forms.ModelForm):
             'description'
         ]
 
-    #To check if we are entering title should not be duplicate by checking its slug
+    #To check if we are entering title should not be duplicate by checking its slug either for update or create class view
     def clean_title(self):
         title = self.cleaned_data['title']
         slug = slugify(title)
