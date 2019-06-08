@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{{object.title}}
+
+
+<h2>{{object.description}}</h2>
+
+
+{% include "single_form.html" with form=form title="New form" btn_title="Add new Comment" %}
+{% endblock %}
