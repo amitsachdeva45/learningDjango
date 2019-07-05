@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^class/(?P<slug>[-\w]+)/delete/$',  ClassDeleteView.as_view() ,name="class_delete"),
     url(r'^class/(?P<slug>[-\w]+)/update/$',  ClassUpdateView.as_view() ,name="class_update"),
     url(r'^class/$',  ClassListView.as_view() ,name="class_list"),
+    url(r'^accounts/', include('registration.backends.default.urls'))
 
     #url(r'^accounts/', include('registration.backends.default.urls')),
 ]
